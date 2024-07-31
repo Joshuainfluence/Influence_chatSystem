@@ -1,0 +1,82 @@
+ <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <img src="assets/img/roman.jpg" alt="">
+                        <h3>Francis</h3>
+                    </div>
+                    <div class="col">
+                        <i class="fa fa-phone"></i>
+                        <i class="fa fa-video-camera"></i>
+                        <i class="fa fa-search"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="chat-box">
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat incoming">
+                            <img src="assets/img/roman.jpg" alt="">
+                            <div class="details">
+                                <p>Hi buddy</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat incoming">
+                            <img src="assets/img/roman.jpg" alt="">
+                            <div class="details">
+                                <p>Hi buddy</p>
+                            </div>
+                        </div>
+                        <div class="chat incoming">
+                            <img src="assets/img/roman.jpg" alt="">
+                            <div class="details">
+                                <p>Hi buddy</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                        <div class="chat outgoing">
+                            <div class="details">
+                                <p>Hellow mate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <i class="fa fa-smile-o"></i>
+                    <i class="fa fa-paperclip"></i>
+                    <input type="text" name="" placeholder="Type a message" id="">
+                    <i class="fa fa-microphone"></i>
+
+                </div>
