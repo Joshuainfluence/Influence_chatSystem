@@ -14,8 +14,8 @@ body {
 }
 
 :root {
-    --primary-color: #333;
-    --blur-color: #555;
+    --primary-color: #202020;
+    --blur-color: #2c2c2c;
     --text-color: white;
     --input-color: #666;
 }
@@ -48,8 +48,8 @@ header nav img {
 }
 
 header nav h2 {
-font-size: 1rem;
-padding: 0.5rem 0 0 0 ;
+    font-size: 1rem;
+    padding: 0.5rem 0 0 0;
 }
 
 
@@ -149,13 +149,18 @@ padding: 0.5rem 0 0 0 ;
     width: 95%;
     height: 40px;
     border: none;
-    background: var(--input-color);
+    background: var(--primary-color);
     border-radius: 5px;
     margin: 0 2% 0 5%;
     position: relative;
     display: flex;
     align-items: center;
     border-bottom: 2px solid var(--text-color);
+}
+
+.row:nth-child(2) .col:nth-child(1) .row:nth-child(2) .col:nth-child(1) input:hover .row:nth-child(2) .col:nth-child(1) .row:nth-child(2) .col:nth-child(1){
+    border-bottom: 2px solid green;
+
 }
 
 .row:nth-child(2) .col:nth-child(1) .row:nth-child(2) .col:nth-child(1) i {
@@ -295,7 +300,7 @@ padding: 0.5rem 0 0 0 ;
 
 .row:nth-child(2) .col:nth-child(2) .row:nth-child(1) .col:nth-child(1) h3 {
     font-size: 0.9rem;
-    margin: 0 0 0 -3rem;
+    margin: 0 0 0 -5rem;
 }
 
 .row:nth-child(2) .col:nth-child(2) .row:nth-child(1) .col:nth-child(2) {
@@ -411,7 +416,7 @@ padding: 0.5rem 0 0 0 ;
     width: 100%;
 }
 
-.something{
+.something {
     width: 200px;
     height: 200px;
     border: 2px solid red;
@@ -423,30 +428,201 @@ padding: 0.5rem 0 0 0 ;
     color: red;
 }
 
-.container .row:nth-child(1) .col:nth-child(1) i:nth-child(1):hover .something{
+.container .row:nth-child(1) .col:nth-child(1) i:nth-child(1):hover .something {
     display: block;
 }
 
 
 /* for login and signup */
 
-.login-container{
+.login-container {
     width: 100%;
-    height: 100vh;
-    border: 1px solid red;
+    min-height: 100vh;
+    /* border: 1px solid red; */
+    /* background: #49AD52;
+     */
+    /* background: #fff; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-container .login-row{
-    width: 50%;
-    height: 50%;
-    border: 2px solid blue;
+.login-container .login-row {
+    width: 450px;
+    height: 60%;
+    /* border: 1px solid #333; */
+    border-radius: 5px;
+    background: #ccc;
+    /* margin: 10% 0 0 25%; */
+    /* background: #fff; */
 }
 
-.login-container .login-row .login-col{
+.login-container .login-row .login-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 30px;
 
+}
+
+.login-container .login-row .login-col img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.login-container .login-row .login-col h2 {
+    color: green;
+    padding: 0 0 1rem 0;
+}
+.login-container .login-row .login-col form .name{
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap; */
+}
+.login-container .login-row .login-col form .name .form-content .form{
+    width: 195px;
+}
+.login-container .login-row .login-col form .form-content {
+    width: 100%;
+    position: relative;
+    
+}
+
+.login-container .login-row .login-col form .form-content .form {
+    width: 400px;
+    height: 45px;
+    padding: 0 0 0 0.6rem;
+    border: none;
+    outline: none;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: #333;
+    position: relative;
+    border-radius: 5px;
+
+
+    /* border-radius: 100px; */
+}
+
+/* show password */
+.login-container .login-row .login-col form .form-content i {
+    position: absolute;
+    padding: 0.8rem 0 0 0;
+    right: 7%;
+    color: #ccc;
+
+
+    /* border-radius: 100px; */
+}
+.login-container .login-row .login-col form .form-content i.active::before{
+    content: "\f070";
+    color: #333;
+}
+
+
+.login-container .login-row .login-col form .form-content .form:focus {
+    border: 1px solid #333;
+
+
+    /* border-radius: 100px; */
+}
+
+.login-container .login-row .login-col form .form-content .button {
+    background: #333;
+    color: #fff;
+    margin: 1rem 0 2rem 0;
+
+    /* border-radius: 100px; */
+}
+
+.login-container .login-row .login-col form .form-content p {
+    /* background: #333; */
+    color: #333;
+    margin: 0 0 2rem 0;
+    text-align: center;
+
+    /* border-radius: 100px; */
+}
+
+.login-container .login-row .login-col form .form-content a {
+    /* background: #333; */
+    color: #333;
+    margin: 0 0 2rem 0;
+    text-decoration: none;
+    font-weight: 500;
+
+    /* border-radius: 100px; */
+}
+
+.login-container .login-row .login-col form .form-content a:hover {
+    color: green;
+}
+
+.login-container .login-row .login-col form .form-content .form::placeholder {
+    color: #000;
+    font-size: 1.2rem;
+}
+
+@media screen and (max-width:700px) {
+
+    /* style for login and sign */
+    .login-container .login-row {
+        width: 400px;
+        height: 60%;
+        /* border: 1px solid #333; */
+        border-radius: 5px;
+        background: #ccc;
+        /* margin: 10% 0 0 25%; */
+        /* background: #fff; */
+    }
+
+    .login-container .login-row .login-col form .form-content .form {
+        width: 350px;
+        height: 45px;
+        padding: 0 0 0 0.6rem;
+        border: none;
+        outline: none;
+        margin: 0 0 1rem 0;
+        font-size: 1.2rem;
+        color: #333;
+        position: relative;
+
+
+        /* border-radius: 100px; */
+    }
+
+    .login-container .login-row .login-col form .name .form-content .form{
+        width: 170px;
+    }
+    .login-container .login-row .login-col form .form-content .button {
+        background: #333;
+        color: #fff;
+        margin: 1rem 0 2rem 0;
+    
+        /* border-radius: 100px; */
+    }
+    
 }
 
 @media screen and (max-width:1200px) {
+
+
+    /* .login-container .login-row .login-col form .form-content i {
+        position: absolute;
+        right: 3.6rem;
+
+        color: #333;
+
+
+
+    } */
+
+    /* login and signup style ends here */
+
+
 
     /* .chat-here{
         display: none;
@@ -455,13 +631,14 @@ padding: 0.5rem 0 0 0 ;
         width: 0px;
         display: none;
     }
+
     header nav img {
 
         border-radius: 50%;
         margin-left: 0.5rem;
     }
-  
-    
+
+
     .row:nth-child(2) .col:nth-child(1) {
         width: 100%;
         height: auto;
