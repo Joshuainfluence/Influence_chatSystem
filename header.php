@@ -60,15 +60,15 @@
                     <!-- loop and display users from the database -->
                     <div class="row1">
                         <div class="col1">
-                            <img src="assets/img/roman.jpg" alt="">
+                            <img src="assets/img/billie.png" alt="">
                         </div>
                         <div class="col2">
                             <div class="row2">
-                                <h3>Francis <img src="assets/img/verify3.png" alt=""></h3>
+                                <h3>Billie Eilish <img src="assets/img/verify3.png" alt=""></h3>
                                 <p>Yesterday</p>
                             </div>
                             <div class="row3">
-                                <p>Yes</p>
+                                <p style="font-size: 0.8rem;">WhatsApp is leaving Nigeria</p>
                             </div>
                         </div>
                     </div>
