@@ -1,5 +1,5 @@
-<?php 
-require_once __DIR__. "/config/session.php";
+<?php
+require_once __DIR__ . "/config/session.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,12 +84,17 @@ require_once __DIR__. "/config/session.php";
                             Already have an account? <a href="login.html">Login</a>
                         </p>
                     </div>
+                    <!-- <button type="button" class="but">but</button> -->
 
                 </form>
             </div>
         </div>
     </div>
+
     <script src="assets/js/password-show.js"></script>
+    <!-- <script src="assets/js/signup.js"></script> -->
+
+    
 
 </body>
 

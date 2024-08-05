@@ -7,6 +7,8 @@
     password varchar(255) NOT NULL,
     profileImage varchar(1000) NOT NULL,
     account varchar(255) NOT NULL DEFAULT "registered",
-    date_registered TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    date_registered TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     last_activity TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP    
  );
+
+ ALTER TABLE users ADD COLUMN vcode varchar(255) NOT NULL DEFAULT "enabled"

@@ -1,94 +1,104 @@
 <?php
 require_once __DIR__ . "/adminHeader.php";
-
+require_once __DIR__ . "/../public/userEdit.classes.php";
+require_once __DIR__ . "/../public/userEdit.contr.php";
+$unique_id = $_GET['unique_id'];
+$y = "";
+$z = "";
+$rows = new UserEditContr($unique_id, $y, $z);
+$rows = $rows->editUser();
+foreach ($rows as $row) :
 ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card table-responsive shadow">
+                    <div class="card-header">
+                        <h4><?= ucfirst($row['fname']) . " " . ucfirst($row['lname']) ?></h4>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <div class="card table-responsive shadow">
-                <div class="card-header">
-                    <h4>Roman Reings</h4>
+                    </div>
+                    <div class="card-body">
 
-                </div>
-                <div class="card-body">
+                        <!-- <h3>Profile image</h3> -->
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <img src="../include/profileUploads/<?= $row['profileImage'] ?>" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card table-responsive">
+                                    <div class="card-body">
+                                        <h5 class="text-success">Account details</h5>
+                                        <form action="../include/userEdit.include.php" method="post">
 
-                    <!-- <h3>Profile image</h3> -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <img src="../assets/img/roman.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card table-responsive">
-                                <div class="card-body">
-                                    <h5 class="text-success">Account details</h5>
-                                    <form action="" method="post">
-                                    
-                                    <div class="row d-flex">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                           <tr>
-                                                <td>
-                                                    FullName
-                                                </td>
-                                                <td>
-                                                    Joshua
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="w-100">
-                                                    Email
-                                                </td>
-                                                <td>
-                                                    Joshuajulius2030@gmail.com
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Status
-                                                </td>
-                                                <td>
-                                                    Verified
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Member since
-                                                </td>
-                                                <td>
-                                                    Joshua
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Account state
-                                                </td>
-                                                <td>
-                                                    <select name="" id="" class="form-control bg-dark text-light">
-                                                        <option value="">Verified</option>
-                                                        <option value="">Register</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    Verification Code
-                                                </td>
-                                                <td>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">Enable</option>
-                                                        <option value="">Disable</option>
-                                                    </select>
-                                                </td>
-                                            </tr>
-                                            
-                                        </table>
-                                        
+                                            <div class="row d-flex">
+                                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                    <tr>
+                                                        <td>
+                                                            FullName
+                                                        </td>
+                                                        <td>
+                                                            <?= ucfirst($row['fname']) . " " . ucfirst($row['lname']) ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-100">
+                                                            Email
+                                                        </td>
+                                                        <td>
+                                                            <?= ucfirst($row['email']) ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Account
+                                                        </td>
+                                                        <td>
+                                                            <?= ucfirst($row['account']) ?>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Member since
+                                                        </td>
+                                                        <td>
+                                                            Joshua
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Account state
+                                                        </td>
+                                                        <td>
+                                                            <select name="account" id="" class="form-control bg-dark text-light">
+                                                                <option value="verified">Verified</option>
+                                                                <option value="registered">Registered</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            Verification Code
+                                                        </td>
+                                                        <td>
+                                                            <select name="vcode" id="" class="form-control">
+                                                                <option value="enable">Enable</option>
+                                                                <option value="disable">Disable</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+
+                                                </table>
+
+
+                                            </div>
+                                            <input type="hidden" name="unique_id" value="<?= $unique_id?>">
+
+                                            <input type="submit" value="save" class="btn btn-dark w-100">
+
+                                        </form>
 
                                     </div>
-                                    <input type="submit" value="save" class="btn btn-dark w-100">
-
-                                    </form>
-
                                 </div>
                             </div>
                         </div>
@@ -96,7 +106,10 @@ require_once __DIR__ . "/adminHeader.php";
                 </div>
             </div>
         </div>
-    </div>
+
+    <?php endforeach ?>
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/js/userEdit.js"></script>
