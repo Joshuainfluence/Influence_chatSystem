@@ -1,3 +1,19 @@
+<?php
+require_once __DIR__ . "/config/session.php";
+$user_id = $_SESSION['user_id'];
+if (!isset($user_id)) {
+    header("Location: login.php");
+}
+
+require_once __DIR__ . "/config/dbh.php";
+require_once __DIR__ . "/public/userProfile.classes.php";
+require_once __DIR__ . "/public/userProfile.contr.php";
+
+$rows = new UserProfileContr($user_id);
+$rows = $rows->userShow();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,6 +52,22 @@
 
 
             </div>
+
+            <div class="col">
+                <i class="fa fa-user">
+                    <div class="user">
+                        <div class="image"><img src="include/profileUploads/<?= $rows[0]['profileImage'] ?>" alt=""></div>
+                        <div class="name"><?= ucfirst($rows[0]['fname']) . " " . ucfirst($rows[0]['lname']) ?><?php if ($rows[0]['account'] == "verified") : ?> <img src="assets/img/verify3.png" alt=""><?php endif ?></div>
+                        <div class="account"><?= ucfirst($rows[0]['account']) ?> User</div>
+                        <div class="setting"><a href=""><i class="fa fa-cog"></i>Settings</a></div>
+
+
+                    </div>
+                </i>
+                <i class="fa fa-sign-out">
+                    <div class="logout"><a href="config/logout.php">Logout</a></div>
+                </i>
+            </div>
         </div>
         <div class="row">
             <div class="col">
@@ -51,8 +83,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <i class="fa fa-search"></i>
-                        <input type="text" name="" id="" placeholder="Search or start a new chat">
+                        <div class="search">
+                            <i class="fa fa-search"></i>
+                            <input type="text" name="" id="searchBar" placeholder="Search or start a new chat">
+                        </div>
                     </div>
                 </div>
                 <div class="chats">
@@ -74,11 +108,11 @@
                     </div>
                     <!-- loop and display users from the database -->
                     <?php
-                    require_once __DIR__. "/config/dbh.php";
+                    require_once __DIR__ . "/config/dbh.php";
                     require_once __DIR__ . "/public/users.classes.php";
                     require_once __DIR__ . "/public/users.contr.php";
 
-                    $x = "registered";
+                    $x = $user_id;
                     $y = "verified";
                     $value = new UsersContr($x, $y);
                     $rows = $value->usersDisplay();
@@ -89,11 +123,11 @@
 
                         <div class="row1">
                             <div class="col1">
-                                <img src="include/profileUploads/<?= $row['profileImage']?>" alt="">
+                                <img src="include/profileUploads/<?= $row['profileImage'] ?>" alt="">
                             </div>
                             <div class="col2">
                                 <div class="row2">
-                                    <h3><?= ucfirst($row['fname']) ." ". ucfirst($row['lname'])?><?php if($row['account'] == "verified"): ?> <img src="assets/img/verify3.png" alt=""><?php endif?> </h3>
+                                    <h3><?= ucfirst($row['fname']) . " " . ucfirst($row['lname']) ?><?php if ($row['account'] == "verified") : ?> <img src="assets/img/verify3.png" alt=""><?php endif ?> </h3>
                                     <p>Yesterday</p>
                                 </div>
                                 <div class="row3">

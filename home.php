@@ -21,6 +21,7 @@ require_once __DIR__. "/header.php";
     </div>
 
     <script src="assets/js/theme.js"></script>
+    <script src="assets/js/search.js"></script>
 
 </body>
 

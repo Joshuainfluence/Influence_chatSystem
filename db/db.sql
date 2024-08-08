@@ -12,3 +12,13 @@
  );
 
  ALTER TABLE users ADD COLUMN vcode varchar(255) NOT NULL DEFAULT "enabled"
+
+
+ CREATE TABLE messages(
+	id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    incoming_msg_id int(11) NOT NULL,
+    outgoing_msg_id int(11) NOT NULL,
+    msg varchar(100000) NOT NULL, 
+    time_sent TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    
+);

@@ -12,11 +12,11 @@ class UsersContr extends Users{
     }
 
     public function usersDisplay(){
-        if ($this->x == null || $this->y == null) {          
+        if ($this->x == null) {          
             exit();
         }
        
-        $data = $this->displayUsers($this->x, $this->y);
+        $data = $this->displayUsers($this->x);
         return $data;
        
     }

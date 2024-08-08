@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     require_once __DIR__. "/../public/userEdit.classes.php";
     require_once __DIR__. "/../public/userEdit.contr.php";
 
-    $update = new UserEditContr($unique_id, $account, $vcode);
+    $update = new UserEditContr($account, $vcode, $unique_id);
     $update->editUserUpdate();
     header("Location: ../admin/userEdit.php?unique_id=$unique_id&account=$account");
     

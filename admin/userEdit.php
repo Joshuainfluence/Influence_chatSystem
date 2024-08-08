@@ -59,10 +59,19 @@ foreach ($rows as $row) :
                                                     </tr>
                                                     <tr>
                                                         <td>
+                                                            Verification Code
+                                                        </td>
+                                                        <td>
+                                                            <?= ucfirst($row['vcode']) ?>
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
                                                             Member since
                                                         </td>
                                                         <td>
-                                                            Joshua
+                                                            <?= $row['date_registered']?>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -70,7 +79,7 @@ foreach ($rows as $row) :
                                                             Account state
                                                         </td>
                                                         <td>
-                                                            <select name="account" id="" class="form-control bg-dark text-light">
+                                                            <select name="account" id="" class="form-control">
                                                                 <option value="verified">Verified</option>
                                                                 <option value="registered">Registered</option>
                                                             </select>
@@ -82,7 +91,7 @@ foreach ($rows as $row) :
                                                         </td>
                                                         <td>
                                                             <select name="vcode" id="" class="form-control">
-                                                                <option value="enable">Enable</option>
+                                                                <option value="enabled">Enable</option>
                                                                 <option value="disable">Disable</option>
                                                             </select>
                                                         </td>

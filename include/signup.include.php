@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // header("Location: ../sendEmail/send.php?error=none");
     // header("Location: ../sendEmail/send.php?error=none");
     header("Location: ../home.php");
-    $_SESSION['username'] = $username;
+    $_SESSION['user_id'] = $unique_id;
     $_SESSION['email'] = $email;
     $signup->signUser();
 

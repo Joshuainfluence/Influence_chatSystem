@@ -5,6 +5,7 @@ class UserEditContr extends UserEdit{
     private $x;
     private $y;
     private $z;
+    
     public function __construct($x, $y, $z)
     {
         $this->x = $x;

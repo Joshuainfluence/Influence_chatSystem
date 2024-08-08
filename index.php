@@ -81,7 +81,7 @@ require_once __DIR__ . "/config/session.php";
                     </div>
                     <div class="form-content">
                         <p>
-                            Already have an account? <a href="login.html">Login</a>
+                            Already have an account? <a href="login.php">Login</a>
                         </p>
                     </div>
                     <!-- <button type="button" class="but">but</button> -->

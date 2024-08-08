@@ -1,5 +1,6 @@
 <?php 
     require_once __DIR__. "/adminHeader.php";
+    require_once __DIR__. "/../config/session.php";
     require_once __DIR__. "/../public/adminuser.classes.php";
     require_once __DIR__. "/../public/adminuser.contr.php";
     $x = "registered";
@@ -8,7 +9,33 @@
     $rows = $rows->userAdmin();
 
 ?>
+ <style>
+        .script {
+            z-index: 9999;
+        }
+    </style>
+    <div class="script">
+        <script>
+            window.onload = function() {
+                <?php if (isset($_SESSION['success'])) : ?>
+                    Swal.fire("Success", "<?= $_SESSION['success'] ?>", "success");
+                <?php endif ?>
 
+                <?php if (isset($_SESSION['error'])) : ?>
+                    Swal.fire("Error", "<?= $_SESSION['error'] ?>", "error");
+                <?php endif ?>
+            };
+        </script>
+    </div>
+    <?php
+    if (isset($_SESSION['success'])) :
+        echo '<script>console.log("Success message: ' . $_SESSION['success'] . '");</script>';
+    endif;
+
+    if (isset($_SESSION['error'])) :
+        echo '<script>console.log("Error message: ' . $_SESSION['error'] . '");</script>';
+    endif;
+    ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -64,8 +91,8 @@
                             <td><?= $row['last_activity'] < 300 ? "<div class='alert alert-success shadow'>Online</div>" : "<div class='alert alert-danger shadow'>Offline</div>" ?></td>
                             <td><?= $row['account'] ?></td>
                             
-                            <td><a href="deleteUser.inc.php?id=<?= $row['id']; ?>" class="btn-del btn alert-danger shadow"><i class="fa fa-trash"></i></a></td>
-                            <td><a href="delete_users.php?id=<?= $row['id']; ?>" class="btn-del btn alert-warning shadow"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="../include/deleteUsers.include.php?unique_id=<?= $row['unique_id']; ?>" class="btn-del btn alert-danger shadow"><i class="fa fa-trash"></i></a></td>
+                            <td><a href="userEdit.php?unique_id=<?= $row['unique_id']?>" class="btn-del btn alert-warning shadow"><i class="fa fa-edit"></i></a></td>
 
 
                             <td><img style="width:120px; height:120px;" src="../include/profileUploads/<?= $row['profileImage']; ?>" alt=""></td>
