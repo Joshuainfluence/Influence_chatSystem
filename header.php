@@ -23,9 +23,28 @@ $rows = $rows->userShow();
     <title>iChat</title>
     <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="assets/font_awesome/css/font-awesome.css">
+    <script src="assets/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="assets/sweetalert/jquery-3.6.4.min.js"></script>
 </head>
 
 <body>
+    <style>
+        .script {
+            z-index: 999999;
+        }
+    </style>
+    <div class="script">
+        <script>
+            window.onload = function() {
+                <?php if (isset($_SESSION['user_id']) && isset($_SESSION['signup'])) : ?>
+                    Swal.fire("Success", "Registration Successful", "success");
+                <?php endif ?>
+                <?php if (isset($_SESSION['user_id']) && isset($_SESSION['login'])) : ?>
+                    Swal.fire("Success", "Login Successful", "success");
+                <?php endif ?>
+            };
+        </script>
+    </div>
     <header>
         <nav>
             <img src="assets/img/logo.png" alt="">
@@ -142,3 +161,4 @@ $rows = $rows->userShow();
 
 
             </div>
+       

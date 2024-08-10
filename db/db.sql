@@ -11,7 +11,17 @@
     last_activity TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP    
  );
 
- ALTER TABLE users ADD COLUMN vcode varchar(255) NOT NULL DEFAULT "enabled"
+ ALTER TABLE users 
+ ADD COLUMN vcode varchar(255) NOT NULL DEFAULT "enabled"
+ 
+
+ ALTER TABLE users 
+ADD COLUMN verification_code VARCHAR(6),
+ADD COLUMN verification_code_expiration TIMESTAMP NULL DEFAULT NULL,
+ADD COLUMN verification_attempts INT DEFAULT 0;
+
+
+
 
 
  CREATE TABLE messages(

@@ -53,7 +53,9 @@ class Login extends Dbh
             var_dump($user);
 
             if ($user[0]['vcode'] == "enabled") {
-                header("Location: ../home.php?Email will be sent to you");
+                $unique_id = $_SESSION['user_id'];
+                $_SESSION['login'] = "login";
+                header("Location: ../sendEmail/send.php?unique_id=$unique_id");
                 exit();
             } else {
                 // this is to update the user's status in the database, when successfully logged in

@@ -23,9 +23,7 @@ require_once __DIR__ . "/config/session.php";
     <div class="script">
         <script>
             window.onload = function() {
-                <?php if (isset($_SESSION['success'])) : ?>
-                    Swal.fire("Success", "<?= $_SESSION['success'] ?>", "success");
-                <?php endif ?>
+              
 
                 <?php if (isset($_SESSION['error'])) : ?>
                     Swal.fire("Error", "<?= $_SESSION['error'] ?>", "error");

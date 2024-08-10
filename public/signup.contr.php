@@ -10,7 +10,7 @@ class SignupContr extends Signup
     private $email;
     private $password;
     private $conpassword;
-   
+
     // for image validation
     private $profile_image;
     private $image_name; //the image name
@@ -28,6 +28,7 @@ class SignupContr extends Signup
     //setting it to public to have access to it from the index file
 
     public $error;
+    // public $verification;
 
 
     public function __construct($unique_id, $fname, $lname, $email, $password, $files)
@@ -57,7 +58,7 @@ class SignupContr extends Signup
         return $result;
     }
 
-   
+
     private function userTaken()
     {
         $result = 0;
@@ -184,7 +185,7 @@ class SignupContr extends Signup
             header("Location: ../index.php?error=emptyfields");
             exit();
         }
-        
+
         if ($this->userTaken() == false) {
             $this->set_message("error", "User already exists");
             header("Location: ../index.php?error=userTaken");
@@ -192,19 +193,19 @@ class SignupContr extends Signup
         }
         if ($this->invalidEmail() == false) {
             $this->set_message("error", "Invalid Email format");
-            header("Location: ../index.php??error=invalidEmail");
+            header("Location: ../index.php?error=invalidEmail");
             exit();
         }
 
         if ($this->invalidlname() == false) {
             $this->set_message("error", "Invalid format");
-            header("Location: ../index.php??error=invalidnameformat");
+            header("Location: ../index.php?error=invalidnameformat");
             exit();
         }
 
         if ($this->passwordLength() == false) {
             $this->set_message("error", "Password should not be less that 8 characters");
-            header("Location: ../index.php??error=Passwordtooshort");
+            header("Location: ../index.php?error=Passwordtooshort");
             exit();
         }
         // for the image aspect
@@ -218,7 +219,94 @@ class SignupContr extends Signup
             $this->moveFile();
         }
         $this->set_message("success", "Registration successful");
+        // Generate 6-digit verification code
+        $verificationCode = rand(100000, 999999);
 
-        $this->RegisterUser($this->unique_id, $this->fname, $this->lname, $this->email, $this->password, $this->newName());
+        // set expiration time to 3 minutes
+        $expirationTime = date("Y-m-d H:i:s", strtotime('+3 minutes'));
+
+
+
+        $this->RegisterUser($this->unique_id, $this->fname, $this->lname, $this->email, $this->password, $this->newName(), $verificationCode, $expirationTime);
     }
+
+    private function sendVerificationEmail($email, $verificationCode)
+    {
+        $subject = "";
+        $message = "";
+        $headers = "";
+
+        if (!mail($email, $message, $headers)) {
+            $this->set_message("error", "Failed to send verification email");
+            header("Location: ../index.php?error=emailfailed");
+            exit();
+        }
+    }
+
+    public function resendVerificationCode($email)
+    {
+        // check if user exists and get the current code expiration time
+        $sql = "SELECT expirationTime FROM users WHERE email = :email";
+        $statement = $this->connection()->prepare($sql);
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            // check if the code is expired
+            if (new DateTime($result['expirationTime']) < new DateTime()) {
+                //generate a new verification code
+                $verificationCode = rand(100000, 999999);
+
+                // set a new expiration date
+                $expirationTime = date("Y-m-d H:i:s", strtotime('+3 minutes'));
+
+                // Update verificationCode and expiration time in the database
+                $sql = "UPDATE users SET verification_Code = :verificationCode, verification_code_expiration = :expirationTime WHERE email = :email";
+                $statement = $this->connection()->prepare($sql);
+                $statement->bindParam(':verificationCode', $verificationCode);
+                $statement->bindParam(':expirationTime', $expirationTime);
+                $statement->bindParam(':email', $email);
+                $statement->execute();
+
+                // Resend the verification email
+                $this->sendVerificationEmail($email, $verificationCode);
+            } else {
+                $this->set_message("error", "You can only resend the code after the current one expires.");
+            }
+        } else {
+            $this->set_message("error", "User not found.");
+        }
+    }
+
+    // public function verifyCode($email, $enteredCode)
+    // {
+    //     // Check if user exists and get the current verification code and expiration time
+    //     $sql = "SELECT verification_code, verification_code_expiration FROM users WHERE email = :email";
+    //     $statement = $this->connection()->prepare($sql);
+    //     $statement->bindParam(':email', $email);
+    //     $statement->execute();
+    //     $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+    //     if ($result) {
+    //         // Check if the code is expired
+    //         if (new DateTime($result['verification_code_expiration']) >= new DateTime()) {
+    //             // Check if the entered code matches the stored code
+    //             if ($enteredCode == $result['verification_code']) {
+    //                 // Code is correct
+    //                 $this->set_message("success", "Verification successful.");
+    //                 // Mark user as verified (optional)
+    //                 // $this->markUserAsVerified($email);
+    //             } else {
+    //                 // Incorrect code
+    //                 $this->set_message("error", "Incorrect verification code.");
+    //             }
+    //         } else {
+    //             // Code is expired
+    //             $this->set_message("error", "Verification code has expired. Please request a new one.");
+    //         }
+    //     } else {
+    //         $this->set_message("error", "User not found.");
+    //     }
+    // }
 }

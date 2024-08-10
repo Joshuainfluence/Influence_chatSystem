@@ -28,10 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     // header("Location: ../sendEmail/send.php?error=none");
     // header("Location: ../sendEmail/send.php?error=none");
     // header("Location: ../sendEmail/send.php?error=none");
-    header("Location: ../home.php");
+    // header("Location: ../home.php");
     $_SESSION['user_id'] = $unique_id;
     $_SESSION['email'] = $email;
+    $_SESSION['signup'] = "signup";
     $signup->signUser();
+    header("Location: ../sendEmail/send.php?unique_id=$unique_id");
 
     
     

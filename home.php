@@ -26,3 +26,5 @@ require_once __DIR__. "/header.php";
 </body>
 
 </html>
+<?php unset($_SESSION['login']);
+unset($_SESSION['signup']) ?>

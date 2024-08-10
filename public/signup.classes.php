@@ -4,8 +4,8 @@ require_once __DIR__."/../config/dbh.php";
 class Signup extends Dbh{
 
     // to insert users into the database or signup users
-    protected function RegisterUser($unique_id, $fname, $lname, $email, $password, $profileImage){
-        $sql = "INSERT INTO users(unique_id, fname, lname, email, password, profileImage) VALUES(:unique_id, :fname, :lname, :email, :password, :profileImage)";
+    protected function RegisterUser($unique_id, $fname, $lname, $email, $password, $profileImage, $verification_code, $expirationTime ){
+        $sql = "INSERT INTO users(unique_id, fname, lname, email, password, profileImage, verification_code, verification_code_expiration) VALUES(:unique_id, :fname, :lname, :email, :password, :profileImage, :verificationCode, :expirationTime)";
         $statement = $this->connection()->prepare($sql);
         
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -15,6 +15,9 @@ class Signup extends Dbh{
         $statement->bindParam(':email', $email);
         $statement->bindParam(':password', $hashedPassword);
         $statement->bindParam(':profileImage', $profileImage);
+        $statement->bindParam(':verificationCode', $verification_code);
+        $statement->bindParam(':expirationTime', $expirationTime);
+
         
 
         if (!$statement->execute()) {

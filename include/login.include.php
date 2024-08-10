@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $login = new LoginContr($email, $password);
     
     $login->LogUser();
+    $_SESSION['login'] = "login";
 
     header("Location: ../home.php?user_id=$user_id");
     
