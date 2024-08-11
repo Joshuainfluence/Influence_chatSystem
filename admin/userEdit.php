@@ -80,8 +80,9 @@ foreach ($rows as $row) :
                                                         </td>
                                                         <td>
                                                             <select name="account" id="" class="form-control">
-                                                                <option value="verified">Verified</option>
-                                                                <option value="registered">Registered</option>
+                                                                <option value="" selected>Choose</option>
+                                                                <option value="verified">Verify</option>
+                                                                <option value="registered">Register</option>
                                                             </select>
                                                         </td>
                                                     </tr>

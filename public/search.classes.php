@@ -1,10 +1,12 @@
-<?php 
-require_once __DIR__. "/../config/session.php";
-require_once __DIR__. "/../config/dbh.php";
+<?php
+require_once __DIR__ . "/../config/session.php";
+require_once __DIR__ . "/../config/dbh.php";
 $user_id = $_SESSION['user_id'];
-class Search extends Dbh{
-    protected function searchUser($x, $y){
-        // $sql = "SELECT * FROM users WHERE NOT unique_id = ? AND (fname LIKE %?% OR lname LIKE %?%)";
+class Search extends Dbh
+{
+    protected function searchUser($x, $y)
+    {
+       
         $sql = "SELECT * FROM users WHERE NOT unique_id = ? AND (fname LIKE CONCAT('%', ?, '%') OR lname LIKE CONCAT('%', ?, '%'))";
 
         $stmt = $this->connection()->prepare($sql);
@@ -14,10 +16,10 @@ class Search extends Dbh{
         }
 
         if ($stmt->rowCount() == 0) {
-           return [];
+            return [];
         }
 
-        
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
         // $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         // return $data;

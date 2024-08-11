@@ -1,6 +1,6 @@
 <?php 
     require_once __DIR__. "/adminHeader.php";
-    require_once __DIR__. "/../config/session.php";
+    // require_once __DIR__. "/../config/session.php";
     require_once __DIR__. "/../public/adminuser.classes.php";
     require_once __DIR__. "/../public/adminuser.contr.php";
     $x = "registered";
@@ -57,7 +57,7 @@
                             <th>Name</th>
                          
                             <th>E-mail</th>
-                            <th>Start date</th>
+                            <th>RegisteredSuccessfully</th>
                             <th>Status</th>
                             <th>Account</th>
                             <th>Delete</th>
@@ -86,7 +86,7 @@
                             <td class="w-100"><a href="userEdit.php?unique_id=<?= $row['unique_id']?>"><?= ucfirst($row['fname'])?> <?= ucfirst($row['lname'])?></a></td>
            
                             <td><?= $row['email'] ?></td>
-                            <td><?= $row['date_registered'] ?></td>
+                            <td><?= date('M j, Y', strtotime($row['date_registered'])) ?></td>
 
                             <td><?= $row['last_activity'] < 300 ? "<div class='alert alert-success shadow'>Online</div>" : "<div class='alert alert-danger shadow'>Offline</div>" ?></td>
                             <td><?= $row['account'] ?></td>

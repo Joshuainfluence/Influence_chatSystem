@@ -42,10 +42,10 @@ if (isset($unique_id)) {
 
         // form redirects the user to an authentication page when they click the verification button
         // getting the user id from the database
-        $mail->Body = ' <div class="container" style="width:100%; height:300px; background:#ffffff;">
-        <div class="row" style="width:70%; height:inherit;">
+        $mail->Body = ' <div class="container" style="width:100%; height:300px; background:#ffffff; display:flex; justify-content:center;">
+        <div class="row" style="width:70%; height:inherit; border: 1px solid #ccc; border-radius: 5px;">
             <div class="col" style="text-align: center;">
-                <h3 style="text-align: center;">Dear ' . ucfirst($row['fname']) . " " . ucfirst($row['lname']) . ' your verification code is: </h3>
+                <h3 style="text-align: center; font-size: 1.3rem;">Dear ' . ucfirst($row['fname']) . " " . ucfirst($row['lname']) . ' your verification code is: </h3>
                 <h1 id="myInput" style="text-align: center;">'.$row['verification_code'].'</h1>
 <button onclick="myFunction()" style="width:100px; height:40px; background:#333; color:#ccc; font-size: 0.8rem;">Copy Code</button>
 

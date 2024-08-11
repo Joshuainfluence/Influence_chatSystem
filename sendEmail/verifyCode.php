@@ -1,6 +1,6 @@
 <?php
 $unique_id = $_GET['unique_id'];
-require_once __DIR__. "/../config/session.php";
+require_once __DIR__ . "/../config/session.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ require_once __DIR__. "/../config/session.php";
 </head>
 
 <body>
-<style>
+    <style>
         .script {
             z-index: 9999;
         }
@@ -23,7 +23,7 @@ require_once __DIR__. "/../config/session.php";
     <div class="script">
         <script>
             window.onload = function() {
-              
+
 
                 <?php if (isset($_SESSION['error'])) : ?>
                     Swal.fire("Error", "<?= $_SESSION['error'] ?>", "error");
@@ -53,7 +53,7 @@ require_once __DIR__. "/../config/session.php";
                 <input type="text" maxlength="1" name="digit4" class="code-input">
                 <input type="text" maxlength="1" name="digit5" class="code-input">
                 <input type="text" maxlength="1" name="digit6" class="code-input">
-                <input type="hidden" name="unique_id" value="<?php echo $unique_id?>">
+                <input type="hidden" name="unique_id" value="<?php echo $unique_id ?>">
 
             </div>
             <div class="buttons">

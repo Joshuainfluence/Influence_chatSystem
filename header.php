@@ -111,7 +111,7 @@ $rows = $rows->userShow();
                 <div class="chats">
 
                     <!-- loop and display users from the database -->
-                    <div class="row1">
+                    <!-- <div class="row1">
                         <div class="col1">
                             <img src="assets/img/billie.png" alt="">
                         </div>
@@ -124,7 +124,7 @@ $rows = $rows->userShow();
                                 <p style="font-size: 0.8rem;">WhatsApp is leaving Nigeria</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- loop and display users from the database -->
                     <?php
                     require_once __DIR__ . "/config/dbh.php";

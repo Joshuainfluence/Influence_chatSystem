@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__. "/../config/session.php";
 class VerifyCodeContr extends VerifyCode
 {
     private $x;

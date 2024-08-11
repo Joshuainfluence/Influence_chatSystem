@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../config/dbh.php";
+require_once __DIR__ . "/../config/session.php";
 class VerifyCode extends Dbh
 {
     private function set_message($type, $message)
@@ -42,18 +43,19 @@ class VerifyCode extends Dbh
                 } else {
                     // Incorrect code
                     $this->set_message("error", "Incorrect verification code.");
+                    header("Location: ../sendEmail/verifyCode.php");
                     exit();
                 }
             } else {
                 // Code is expired
                 $this->set_message("error", "Verification code has expired. Please request a new one.");
+                header("Location: ../sendEmail/verifyCode.php");
                 exit();
-
             }
         } else {
             $this->set_message("error", "User not found.");
+            header("Location: ../sendEmail/verifyCode.php");
             exit();
-
         }
     }
 }
