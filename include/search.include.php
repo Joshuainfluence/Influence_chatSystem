@@ -16,7 +16,7 @@ if (!empty($results)) {
     foreach ($results as $row) {
         echo '<div class="row1">';
         echo ' <div class="col1">
-                            <img src="include/profileUploads/'.$row['profileImage'].'" alt="">
+                            <img src="include/profileUploads/' . $row['profileImage'] . '" alt="">
                         </div>';
         echo '<div class="col2">';
         echo '<div class="row2">
@@ -33,7 +33,7 @@ if (!empty($results)) {
         echo '</div>';
         echo '</div>';
     }
-}else {
+} else {
     echo '<div class="row3">
                                 <p style="font-size: 0.8rem; padding: 1rem 0 0 2rem;">Search not found</p>
                             </div>';
